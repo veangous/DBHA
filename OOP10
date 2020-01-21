@@ -1,0 +1,47 @@
+ public class Schrank   {
+    private int anzahl;
+    private double max_gewicht;
+    private double gewicht = 0;
+    private int zaehler = 0;
+    private Gegenstand [] array;
+    
+    Schrank(int max_anzahl, double max_gewicht)   {
+       array = new Gegenstand[max_anzahl];
+       this.max_gewicht = max_gewicht;
+    }
+    public char packEtwasRein(Gegenstand x) {
+        if (array.length == zaehler)    {return "v";}
+        else if (gewicht+x.getGewicht() >= max_gewicht) {return "m";}
+        else { 
+        array[zaehler] = x;    
+        zaehler=+ 1;
+        gewicht= gewicht+x.getGewicht();
+        return "e";
+        }
+    }
+    
+    public String print()   {
+        for(int i; i<=array.length; i++)    {
+        System.out.println(array[i]);   
+        }
+    }
+    
+    public String print(double y)   {
+        for(int i; i<=array.length; i++)    {
+            if( array[i].getGewicht() <= double y )  {
+                System.out.println(array[i];)
+            }
+        }
+    }
+    
+    public String istGegenstandVorhanden(String g)   {
+        for(int i; i<=array.length; i++)    {
+            if( array[i].getName().equals(g) )  {
+               return true;
+            }
+        }
+    return false;    
+    }
+    
+ }
+ 
