@@ -1,0 +1,98 @@
+class FilmDVD extends Medium{
+	    
+	    private String genre;
+	    private String titel;
+	   
+	    public FilmDVD(String titel, String genre){
+	        super(titel);
+	        this.genre=genre;
+	        this.titel=titel;
+	    }
+	    
+	    @Override
+	    public boolean equals(Object obj) {
+	        
+	        if(obj instanceof FilmDVD) {
+	            FilmDVD m = (FilmDVD) obj;
+	            if(super.toString().equals(m.titel))
+	                return true;
+	        }
+	        return false;
+	    }
+	    
+	    @Override
+	    public String toString() {
+	        return super.toString() +" ("+genre+")";
+	    }
+	    
+	}
+	
+	public class Mediendatenbank {
+	    private Medium[] db;
+	    private int anzahlMedien;
+	    public Mediendatenbank(int groesse) {
+	        db = new Medium[groesse];
+	        anzahlMedien = 0;
+	    }
+	    public Medium gibMedium(int pos) {
+	        if(pos < 0) return null;
+	        if(pos >= anzahlMedien)
+	            return null;
+	        return db[pos];
+	    }
+	   // Ihre Methoden
+	   // ...
+	   public boolean fuegeNeuesMediumHinzu(Medium a){
+	       for(int i = 0;i<db.length;i++){
+	           if(db[i]==null){
+	               anzahlMedien++;
+	               db[i]=a;
+	               return true;
+	           }
+	       }
+	       return false;
+	   }
+	   public int findeMedium(Medium a){
+	       for(int i = 0;i<db.length;i++){
+	           if(db[i]!=null && db[i].equals(a)==true){
+	               if(a instanceof FilmDVD){
+	                   if(((FilmDVD) a).toString().equals(((FilmDVD)db[i]).toString()))
+	                   return i;
+	               }
+	               else
+	               {
+	                   return i;
+	               }
+	           }
+	       }
+	           
+	       return -1;
+	   }
+	     
+	}
+	
+	
+	class MusikCD extends Medium{
+	    private String titel;
+	    private String kuenstler;
+	    public MusikCD(String titel, String kuenstler){
+	        super(titel);
+	        this.kuenstler=kuenstler;
+	        this.titel=titel;
+	    }
+	    @Override
+	     public boolean equals(Object obj) {
+	        if(obj instanceof MusikCD) {
+	            MusikCD m = (MusikCD) obj;
+	            if(this.toString().equals(m.toString()))
+	                return true;
+	        }
+	        return false;
+	    }
+	    
+	    @Override
+	    public String toString() {
+	        return super.toString() + " von "+kuenstler;
+	    }
+	}
+
