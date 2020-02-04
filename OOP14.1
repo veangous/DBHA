@@ -1,0 +1,67 @@
+public class Paar<T> {
+	    private T wert1, wert2;
+	    // Methoden
+	    // ...
+	    public Paar(T wert1, T wert2){
+	        this.wert1=wert1;
+	        this.wert2=wert2;
+	    }
+	    public T getWert1(){
+	        return wert1;
+	    }
+	    public T getWert2(){
+	        return wert2;
+	    }
+	    public String toString(){
+	        String ausgabe="("+wert1+", "+wert2+")";
+	        return ausgabe;
+	    }
+	    public boolean equals(Object o) {
+	        if(o instanceof Paar<?>) {
+	            Paar<?> p = (Paar<?>) o;
+	            // nun koennen Sie auf die Attribute des uebergebenen Objektes
+	            // ueber p zugreifen
+	            // ...
+	            if(this.wert1.equals(p.wert1) && this.wert2.equals(p.wert2)){
+	                return true;//primitive Datentypen werden mit  "==" vergliechen alle andere wie z.B Objecte, Strings usw. werden mit equals()vergliechen
+	            }
+	        }
+	        return false;
+	    }
+	}
+	
+	
+	
+	import java.util.List;
+	import java.util.ArrayList;
+	class Zaehler<T>{
+	    private ArrayList<T> elemente= new ArrayList<>();
+	    private ArrayList<Integer>haefigkeit=new ArrayList<>();
+	    //Arraylist und List...= new Arraylist unterscheiden sich
+	    
+	    
+	    public void neuesElement(T a){
+	        if(elemente.contains(a)){
+	                int index=elemente.indexOf(a);
+	                haefigkeit.set(index, haefigkeit.get(index) + 1);
+	        }
+	            
+	        else{
+	           elemente.add(a);
+	           haefigkeit.add(1);
+	        }
+	    }
+	    
+	    public String toString(){
+	        String ausgabe="";
+	        for(int i =0;i<elemente.size();i++){
+	            ausgabe=ausgabe+elemente.get(i).toString() + " ("+haefigkeit.get(i)+" mal)" + "\n";
+	        }
+	        return ausgabe;
+	    }
+	    
+	}
+
+
+
+
